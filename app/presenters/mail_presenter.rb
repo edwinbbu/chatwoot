@@ -34,7 +34,7 @@ class MailPresenter < SimpleDelegator
     return '' if %r{(Content-Type:|multipart/alternative|text/plain)}.match?(decoded)
 
     if (mail.content_type || '').include? 'text/html'
-      HTMLParser.parse_reply(decoded)
+      ::HtmlParser.parse_reply(decoded)
     else
       decoded
     end
